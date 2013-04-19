@@ -4,8 +4,16 @@ class Racc::App
       {:adapter => 'tinytds', 
        :host =>'sdwsql01', 
        :database => 'racc_v2b_alpha', 
-       :user => 'racc_v2b_alpha', 
+       :username => 'racc_v2b_alpha', 
        :password => 'racc_v2b_alpha8245'}
+    end
+
+    def self.local
+      {:adapter => 'jdbcmysql', 
+       :host =>'localhost', 
+       :database => 'racc_dev', 
+       :username => 'root', 
+       :password => ''}
     end
   end
 end

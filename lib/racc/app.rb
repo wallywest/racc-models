@@ -2,7 +2,7 @@ require "racc/models/version"
 
 require 'rack'
 require 'logger'
-require 'sequel'
+require 'active_record'
 require 'rack/contrib'
 require 'pry'
 
@@ -13,6 +13,7 @@ module Racc
     autoload :Config, 'racc/config'
     autoload :Extensions, 'racc/extensions'
     autoload :Exporters, 'racc/exporter'
+    autoload :Services, 'racc/services'
 
     def self.new
       setup
@@ -33,7 +34,6 @@ module Racc
     def initialize
       @app = Rack::Builder.app do
         use Rack::Deflater
-        use Rack::CommonLogger
         use Rack::PostBodyContentTypeParser
 
         Endpoint.subclasses.each {|e| map(e.prefix) {run(e.new)}}
@@ -58,13 +58,11 @@ module Racc
     end
 
     def self.load_models
-      $DB = Sequel.connect(Config::alpha)
-      $DB.log_warn_duration = 0
-      $DB.logger = Logger.new("models.log")
+      ActiveRecord::Base.establish_connection(Config::local)
 
       require "racc/models/group"
-      require "racc/models/vlabel_map"
-      require "racc/models/destination"
+      #require "racc/models/vlabel_map"
+      #require "racc/models/destination"
     end
 
     def self.load_endpoints

@@ -18,13 +18,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "sequel"
-  spec.add_dependency "tiny_tds"
-  spec.add_dependency "roo"
+  #spec.add_dependency "sequel"
+  spec.add_dependency "activerecord"
+  #spec.add_dependency "tiny_tds"
+  #spec.add_dependency "mysql2"
+  #spec.add_dependency "roo"
   spec.add_dependency "sinatra"
   spec.add_dependency "sinatra-contrib"
   spec.add_dependency "rack-contrib"
-  spec.add_dependency "thin"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
