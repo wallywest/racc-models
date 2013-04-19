@@ -9,7 +9,7 @@ class Racc::App
     end
 
     def self.local
-      {:adapter => 'jdbcmysql', 
+      {:adapter => 'postgresql', 
        :host =>'localhost', 
        :database => 'racc_dev', 
        :username => 'root', 
