@@ -18,11 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  #spec.add_dependency "sequel"
-  spec.add_dependency "activerecord"
-  #spec.add_dependency "tiny_tds"
-  #spec.add_dependency "mysql2"
-  #spec.add_dependency "roo"
+  spec.add_dependency "activerecord","~> 4.0.0.beta1"
   spec.add_dependency "sinatra"
   spec.add_dependency "sinatra-contrib"
   spec.add_dependency "rack-contrib"
